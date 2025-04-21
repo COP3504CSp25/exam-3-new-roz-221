@@ -19,14 +19,14 @@ public:
     int* getStats() const{
 
         const size_t size = 3;
-        int* stats[size];
+        int* stats = new int[size];
         std::vector<int> values;
         int sum = 0;
 
         if (head == nullptr) {
-            *stats[0] = 0;
-            *stats[1] = 0;
-            *stats[2] = 0;
+            stats[0] = 0;
+            stats[1] = 0;
+            stats[2] = 0;
         }
 
         else {
@@ -44,7 +44,7 @@ public:
                     min = values.at(i);
                 }
             }
-            *stats[0] = min;
+            stats[0] = min;
 
             // Maximum
             int max = values.at(0);
@@ -53,12 +53,12 @@ public:
                     max = values.at(i);
                 }
             }
-            *stats[1] = max;
+            stats[1] = max;
 
             // Mean
-            *stats[2] = (sum / values.size());
+            stats[2] = static_cast<int>(sum / values.size());
         }
-        return (stats[0]);
+        return stats;
     }
     
 
