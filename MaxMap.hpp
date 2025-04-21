@@ -6,13 +6,13 @@
 #include <vector>
 
 float consultMax(const std::string& search_term, const std::map<std::string, std::vector<float>>& data) {
-    float max = -1;
+    float max = -1.0;
     //std::map<std::string, std::vector<float>>::iterator iter = data.begin();
     auto iter = data.begin();
     for (iter; iter != data.end(); ++iter) {
         if (iter->first == search_term) {
-            for (int i = 0; i < (iter->second).size(); ++i) {
-                if (iter->first.at(i) > max) { max = iter->first.at(i); }
+            for (int i = 0; i < iter->second.size(); ++i) {
+                if (iter->second.at(i) > max) { max = iter->second.at(i); }
             }
         }
     }

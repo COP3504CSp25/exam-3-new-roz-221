@@ -17,38 +17,46 @@ public:
     }
 
     int* getStats() const{
-        int stats[3];
+        const size_t size = 3;
+        int stats[size];
         std::vector<int> values;
         int sum = 0;
 
-        Node* temp = head;
-        while(temp != nullptr) {
-            values.push_back(temp->data);
-            sum += temp->data;
-            temp = temp->next;
+        if (head == nullptr) {
+            stats[0] = 0;
+            stats[1] = 0;
+            stats[2] = 0;
         }
 
-        // Minimum
-        int min = values.at(0);
-        for (size_t i = 0; i < values.size(); i++){
-            if (values.at(i) <= min) {
-                min = values.at(i);
+        else {
+            Node* temp = head;
+            while(temp != nullptr) {
+                values.push_back(temp->data);
+                sum += temp->data;
+                temp = temp->next;
             }
-        }
-        stats[0] = min;
 
-        // Maximum
-        int max = values.at(0);
-        for (size_t i = 0; i < values.size(); i++){
-            if (values.at(i) >= max) {
-                max = values.at(i);
+            // Minimum
+            int min = values.at(0);
+            for (size_t i = 0; i < values.size(); i++){
+                if (values.at(i) <= min) {
+                    min = values.at(i);
+                }
             }
+            stats[0] = min;
+
+            // Maximum
+            int max = values.at(0);
+            for (size_t i = 0; i < values.size(); i++){
+                if (values.at(i) >= max) {
+                    max = values.at(i);
+                }
+            }
+            stats[1] = max;
+
+            // Mean
+            stats[2] = (sum / values.size());
         }
-        stats[1] = max;
-
-        // Mean
-        stats[2] = (sum / values.size());
-
         return &stats[0];
     }
     
