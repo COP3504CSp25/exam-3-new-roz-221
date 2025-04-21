@@ -1,5 +1,6 @@
-#pragma once
+//#pragma once
 #include <vector>
+#include <cmath>
 
 //Single linked list, not double
 struct Node {
@@ -56,12 +57,11 @@ public:
             stats[1] = max;
 
             // Mean
-            stats[2] = static_cast<int>(sum / values.size());
+            stats[2] = static_cast<int>(floor(sum / values.size()));
         }
         return stats;
     }
     
-
 private:
     Node* head = nullptr;
 };
