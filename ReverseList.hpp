@@ -1,5 +1,6 @@
 #pragma once
 
+//Single linked list again
 struct Node {
     int data;
     Node* next;
@@ -15,7 +16,16 @@ public:
     }
     
     LinkedList reverseList() const {
-        // implement your function here!
+        int length = 0;
+        Node* temp = head;
+        LinkedList reverseList;
+
+        while (temp != nullptr) {
+            reverseList.addHead(temp->data);
+            temp = temp->next;
+        }
+
+        return reverseList;
     }
 
     Node* head = nullptr;
