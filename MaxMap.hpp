@@ -12,7 +12,7 @@ float consultMax(const std::string& search_term, const std::map<std::string, std
     for (iter; iter != data.end(); ++iter) {
         if (iter->first == search_term) {
             for (int i = 0; i < (iter->second).size(); ++i) {
-                if (iter->first.at(i) >= max) { max = iter->first.at(i); }
+                if (iter->first.at(i) > max) { max = iter->first.at(i); }
             }
         }
     }
@@ -26,7 +26,7 @@ std::map<std::string, float> returnMaxMap(const std::map<std::string, std::vecto
     for (it; it != in_map.end(); ++it) {
         float max = (it->second).at(0);
         for (int j = 0; j < (it->second).size(); ++j) {
-            if (it->second.at(j) >= max) {
+            if (it->second.at(j) > max) {
                 max = it->second.at(j);
             }
         }

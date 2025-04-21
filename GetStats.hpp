@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 //Single linked list, not double
 struct Node {
@@ -48,7 +49,7 @@ public:
         // Mean
         stats[2] = (sum / values.size());
 
-        return *stats[0];
+        return &stats[0];
     }
     
 
