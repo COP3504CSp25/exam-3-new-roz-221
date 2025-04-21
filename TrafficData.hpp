@@ -7,7 +7,7 @@
 #include <sstream>
 
 std::map<std::string, int> loadTrafficData(const std::string& filename) {
-  map<std::string, int> trafficData;
+  std::map<std::string, int> trafficData;
   std::ifstream file(filename);
   std::string line;
 
@@ -16,11 +16,11 @@ std::map<std::string, int> loadTrafficData(const std::string& filename) {
   }
 
   while(getline(file,line)) {
-    std::isstream ss(line);
+    std::istringstream ss(line);
     std::string airportCode;
     int passengers;
 
-    if (getline(ss, airportCode, ",") && (ss >> passengers)) {
+    if (getline(ss, airportCode) && (ss >> passengers)) {
       trafficData[airportCode] = passengers;
     }
   }
@@ -38,12 +38,12 @@ void updateTrafficData(const std::string& filename, std::map<std::string, int>& 
   }
 
   while(getline(file,line)) {
-    std::isstream ss(line);
+    std::istringstream ss(line);
     std::string airportCode;
     int passengers;
 
     // Will create/update as necessary already? idk
-    if (getline(ss, airportCode, ",") && (ss >> passengers)) {
+    if (getline(ss, airportCode) && (ss >> passengers)) {
       dataMap[airportCode] = passengers;
     }
   }
